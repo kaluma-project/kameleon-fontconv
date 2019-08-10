@@ -1,4 +1,7 @@
 {
+  "name": "kameleon-fontconv",
+  "description": "A font converter from GBDF format to Kameleon font object",
+  "version": "0.9.0",
   "dependencies": {
   }
 }

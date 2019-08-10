@@ -193,24 +193,37 @@ function convertFontObj () {
   font.height = Math.max.apply(null, font.glyphs.map(g => g.height))
   font.advanceX = font.width
   font.advanceY = font.height
+
+  function _hex (val) {
+    var v = val.toString(16)
+    if (v.length === 1) {
+      return '0x0' + v
+    } else {
+      return '0x' + v
+    }
+  }
+
   console.log('var font = {')
   console.log('  bitmap: new Uint8Array([')
   for (var i = 0; i < font.glyphs.length; i++) {
     var glyph = font.glyphs[i]
-    console.log('    ' + glyph.bitmap.map(v => v + '').join(', ') + (i < font.glyphs.length - 1 ? ',' : ''))
+    var values = Array.from(glyph.bitmap)
+    console.log('    ' + values.map(v => _hex(v)).join(', ') + (i < font.glyphs.length - 1 ? ',' : '') + ` // '${glyph.encoding}'`)
     // for (var j = 0; j < glyph.bitmap.length; j++) {
     //  glyph.bitmap.forEach()
     // }
     
   }
-  console.log('  ]),')
+  console.log('  ]).buffer,')
   console.log(`  width: ${font.width},`)
   console.log(`  height: ${font.height},`)
   console.log(`  first: ${font.first},`)
   console.log(`  last: ${font.last},`)
   console.log(`  advanceX: ${font.advanceX},`)
-  console.log(`  advanceY: ${font.advanceX}`)
+  console.log(`  advanceY: ${font.advanceY}`)
   console.log('}')
+  console.log('')
+  console.log('module.exports = font;')
   // console.log(font)
 }
 
