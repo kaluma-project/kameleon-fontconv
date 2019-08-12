@@ -1,14 +1,26 @@
 # Kameleon Font Converter
 
-Convert GBDF (Glyph Bitmap Distribution Format) `.bdf` to Kameleon's font object `.js`.
+A command-line tool to convert [GBDF (Glyph Bitmap Distribution Format)](https://en.wikipedia.org/wiki/Glyph_Bitmap_Distribution_Format) `.bdf` to Kameleon font object `.js`.
 
-
-- [Raster Font Editor v0.14](https://www.cylog.org/graphics/rasterfonteditor.jsp) - Good raster font editor for Windows.
-  - GBDF Format exported by Raster Font Editor (v0.14) has error in bitmap ordering.
-
+## Install
 
 ```sh
-$ kameleon-fontconv my-font.bdf # generate my-font.js
-$ kameleon-fontconv my-font.bdf -o new-font.js
-$ kameleon-fontconv my-font.bdf --width-var
+$ npm install -g kameleon-fontconv
 ```
+
+## Usage
+
+```sh
+$ kameleon-fontconv -h # see help
+$ kameleon-fontconv my-font.bdf # generate my-font.js
+$ kameleon-fontconv my-font.bdf -t font.js
+$ kameleon-fontconv my-font.bdf --width-var # generate variable-width font
+```
+
+The generated font object can be used by calling `GraphicContext.setFont()`.
+
+## Editor for custom font
+
+[Raster Font Editor v0.14](https://www.cylog.org/graphics/rasterfonteditor.jsp) - Good raster font editor for Windows.
+- GBDF Format exported by Raster Font Editor (v0.14) has error in bitmap ordering.
+- `kameleon-fontconv` detects font generator name and version in GBDF format, and fix the bitmap ordering problem automatically.
