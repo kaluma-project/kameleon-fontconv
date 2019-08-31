@@ -11,10 +11,11 @@ $ npm install -g kameleon-fontconv
 ## Usage
 
 ```sh
-$ kameleon-fontconv -h # see help
-$ kameleon-fontconv my-font.bdf # generate my-font.js
-$ kameleon-fontconv my-font.bdf -t font.js
-$ kameleon-fontconv my-font.bdf --width-var # generate variable-width font
+$ kameleon-fontconv -h  # see help
+$ kameleon-fontconv my-font.bdf  # generate my-font.js
+$ kameleon-fontconv my-font.bdf -t font.js  # change target filename
+$ kameleon-fontconv my-font.bdf --width-var  # generate variable-width font
+$ kameleon-fontconv my-font.bdf --use-array  # generate data as array
 ```
 
 The generated font object can be used by calling `GraphicContext.setFont()`.
